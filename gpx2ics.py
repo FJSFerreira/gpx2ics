@@ -16,10 +16,19 @@ def concatenate(string1, string2):
 def readable_location(location):
 
 	if location.get('city') == 'Lisboa' or location.get('city') == 'Porto':
+		if location.get('neighbourhood') != None:
+			return location.get('city') + ' (' + location.get('neighbourhood') + ')'
 		if location.get('suburb') != None:
 			return location.get('city') + ' (' + location.get('suburb') + ')'
 		else:
 			return location.get('city') + ' (' + location.get('city_district') + ')'
+	if location.get('municipality') == 'Lisboa' or location.get('municipality') == 'Porto':
+		if location.get('neighbourhood') != None:
+			return location.get('municipality') + ' (' + location.get('neighbourhood') + ')'
+		if location.get('suburb') != None:
+			return location.get('municipality') + ' (' + location.get('suburb') + ')'
+		else:
+			return location.get('municipality') + ' (' + location.get('city_district') + ')'
 	elif location.get('village') != None:
 		return location.get('village') + ', ' + location.get('municipality')
 	elif location.get('town') != None:
