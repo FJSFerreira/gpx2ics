@@ -39,6 +39,8 @@ def readable_location(location):
 		return location.get('municipality')
 
 def generate_calendar(gpx):
+	
+	now = datetime.strftime(datetime.now(), '%Y%m%dT%H%M%S')
 
 	xml = etree.parse(gpx)
 	nominatim = Nominatim(user_agent='Geocaching Eventos em Portugal by FJSFerreira')
@@ -60,8 +62,6 @@ def generate_calendar(gpx):
 		
 		start_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(start_time, '%H%M%S')
 		end_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(end_time, '%H%M%S')
-		
-		now = '19700101T000000'
 		
 		gc_code = wpt.find('.//{' + GPX_NAMESPACE + '}name').text
 		
