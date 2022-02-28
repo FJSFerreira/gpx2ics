@@ -30,7 +30,10 @@ def readable_location(location):
 		else:
 			return location.get('municipality') + ' (' + location.get('city_district') + ')'
 	elif location.get('village') != None:
-		return location.get('village') + ', ' + location.get('municipality')
+		if location.get('municipality') != None:
+			return location.get('village') + ', ' + location.get('municipality')
+		else:
+			return location.get('village')
 	elif location.get('town') != None:
 		return location.get('town')
 	elif location.get('city') != None:
