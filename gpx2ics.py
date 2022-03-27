@@ -1,8 +1,9 @@
 import sys
 import re
+import time
 
 from lxml import etree
-from datetime import datetime
+from datetime import datetime, timedelta
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
@@ -60,8 +61,11 @@ def generate_calendar(gpx):
 		splitted_short_description = re.split(', | - ', short_description_html)
 		
 		date = datetime.strptime(splitted_short_description[0], '%d %B %Y')
-		start_time = datetime.strptime(splitted_short_description[1], '%H:%M')
-		end_time = datetime.strptime(splitted_short_description[2], '%H:%M')
+		
+		is_dst = date.timetuple().tm_isdst
+		
+		start_time = datetime.strptime(splitted_short_description[1], '%H:%M') - timedelta(hours = is_dst)
+		end_time = datetime.strptime(splitted_short_description[2], '%H:%M') - timedelta(hours = is_dst)
 		
 		start_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(start_time, '%H%M%S')
 		end_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(end_time, '%H%M%S')
