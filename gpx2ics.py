@@ -70,8 +70,8 @@ def generate_calendar(gpx):
 		latitude = wpt.attrib['lat']
 		longitude = wpt.attrib['lon']
 		
-		start_time = datetime.strptime(splitted_short_description[1], '%H:%M') - timedelta(hours = is_dst) - timedelta(hours = (1 if is_azores(float(longitude)) else 0))
-		end_time = datetime.strptime(splitted_short_description[2], '%H:%M') - timedelta(hours = is_dst) - timedelta(hours = (1 if is_azores(float(longitude)) else 0))
+		start_time = datetime.strptime(splitted_short_description[1], '%H:%M') + timedelta(hours = is_dst) + timedelta(hours = (1 if is_azores(float(longitude)) else 0))
+		end_time = datetime.strptime(splitted_short_description[2], '%H:%M') + timedelta(hours = is_dst) + timedelta(hours = (1 if is_azores(float(longitude)) else 0))
 		
 		start_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(start_time, '%H%M%S')
 		end_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(end_time, '%H%M%S')
