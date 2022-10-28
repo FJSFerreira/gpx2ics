@@ -106,5 +106,5 @@ if len(sys.argv) < 2:
 	print('Parameter error! Usage: <gpx>', file=sys.stderr)
 else:
 	gpx = sys.argv[1]
-	print(generate_calendar(gpx).encode('utf-8'))
+	print(generate_calendar(gpx))
 	#generate_calendar(gpx)
