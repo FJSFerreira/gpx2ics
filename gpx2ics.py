@@ -41,9 +41,6 @@ def readable_location(location):
 	else:
 		return location.get('municipality')
 
-def is_azores(longitude):
-	return longitude < -20
-
 def generate_calendar(gpx):
 	
 	now = datetime.strftime(datetime.now(), '%Y%m%dT%H%M%S')
@@ -67,8 +64,8 @@ def generate_calendar(gpx):
 		latitude = wpt.attrib['lat']
 		longitude = wpt.attrib['lon']
 		
-		start_time = datetime.strptime(splitted_short_description[1], '%H:%M') + timedelta(hours = (1 if is_azores(float(longitude)) else 0))
-		end_time = datetime.strptime(splitted_short_description[2], '%H:%M') + timedelta(hours = (1 if is_azores(float(longitude)) else 0))
+		start_time = datetime.strptime(splitted_short_description[1], '%H:%M')
+		end_time = datetime.strptime(splitted_short_description[2], '%H:%M')
 		
 		start_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(start_time, '%H%M%S')
 		end_date = datetime.strftime(date, '%Y%m%dT') + datetime.strftime(end_time, '%H%M%S')
@@ -81,8 +78,8 @@ def generate_calendar(gpx):
 		
 		result = concatenate(result, 'BEGIN:VEVENT')
 		
-		result = concatenate(result, 'DTSTART:' + start_date)
-		result = concatenate(result, 'DTEND:' + end_date)
+		result = concatenate(result, 'DTSTART;TZID=Europe/Lisbon::' + start_date)
+		result = concatenate(result, 'DTEND;TZID=Europe/Lisbon::' + end_date)
 		result = concatenate(result, 'DTSTAMP:' + now)
 		result = concatenate(result, 'UID:' + gc_code)
 		result = concatenate(result, 'CREATED:' + now)
