@@ -78,8 +78,8 @@ def generate_calendar(gpx):
 		
 		result = concatenate(result, 'BEGIN:VEVENT')
 		
-		result = concatenate(result, 'DTSTART;TZID=Europe/Lisbon::' + start_date)
-		result = concatenate(result, 'DTEND;TZID=Europe/Lisbon::' + end_date)
+		result = concatenate(result, 'DTSTART;TZID=Europe/Lisbon:' + start_date)
+		result = concatenate(result, 'DTEND;TZID=Europe/Lisbon:' + end_date)
 		result = concatenate(result, 'DTSTAMP:' + now)
 		result = concatenate(result, 'UID:' + gc_code)
 		result = concatenate(result, 'CREATED:' + now)
