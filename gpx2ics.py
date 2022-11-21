@@ -11,7 +11,7 @@ GROUNDSPEAK_NAMESPACE = 'http://www.groundspeak.com/cache/1/0/1'
 GPX_NAMESPACES = { 'gpx': GPX_NAMESPACE }
 
 def concatenate(string1, string2):
-	return string1 + '\r\n' + string2
+	return string1 + '\n' + string2
 
 def readable_location(location):
 
