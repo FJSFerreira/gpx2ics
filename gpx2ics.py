@@ -20,6 +20,8 @@ def readable_location(location):
 			return location.get('city') + ' (' + location.get('neighbourhood') + ')'
 		if location.get('suburb') != None:
 			return location.get('city') + ' (' + location.get('suburb') + ')'
+		if location.get('village') != None:
+			return location.get('city') + ' (' + location.get('village') + ')'
 		else:
 			return location.get('city') + ' (' + location.get('city_district') + ')'
 	if location.get('municipality') == 'Lisboa' or location.get('municipality') == 'Porto':
