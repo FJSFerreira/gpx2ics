@@ -7,7 +7,7 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 
 GPX_NAMESPACE = 'http://www.topografix.com/GPX/1/0'
-GROUNDSPEAK_NAMESPACE = 'http://www.groundspeak.com/cache/1/0'
+GROUNDSPEAK_NAMESPACE = 'http://www.groundspeak.com/cache/1/0/1'
 GPX_NAMESPACES = { 'gpx': GPX_NAMESPACE }
 
 def concatenate(string1, string2):
